@@ -1,0 +1,30 @@
+{
+    "id": 1,
+    "title": "Network Automation Tool",
+    "type": "Backend",
+    "description": "A network monitoring solution using SNMP and browser automation for Olympic Broadcasting Services (OBS).",
+    "technologies": [
+        "Python",
+        "Selenium",
+        "SNMPv3",
+        "Bash",
+        "Pandas",
+        "Power BI"
+    ],
+    "features": [
+        "Automated network metrics retrieval via SNMP",
+        "Browser automation using Selenium for data extraction",
+        "Intelligent PDF report generation",
+        "Data analysis and visualization with Power BI",
+        "Real-time monitoring dashboard",
+        "Cross-platform compatibility"
+    ],
+    "results": [
+        "Reduced manual monitoring time by 80%",
+        "Improved accuracy of network reports",
+        "Enabled proactive issue detection and resolution"
+    ],
+    "image": "/projects/automation.jpg",
+    "github": "https://github.com/yourprofile",
+    "demo": null
+}

@@ -1,0 +1,552 @@
+/* ==== SECTION DES PROJETS ==== */
+.projects-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Permet au contenu de se développer normalement */
+  background: linear-gradient(45deg, #0f172a 0%, #1e293b 100%);
+  text-align: center;
+  transform: scale(1);
+  height: auto; /* Permet d'étendre la hauteur en fonction du contenu */
+  min-height: 100vh; /* Assure une hauteur minimale de l'écran */
+  padding: 4rem 1rem;
+  box-sizing: border-box;
+  overflow-y: auto; /* Active le scroll si besoin */
+}
+
+/* TITRE RESPONSIVE */
+.projects-header h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden; /* Empêche le débordement horizontal */
+  overflow-y: auto; /* Assure que le scroll vertical fonctionne */
+  
+}
+
+/* CARTE PROJET */
+.project-card {
+  background: var(--glass);
+  border-radius: 15px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.4s;
+  width: 100%;
+  max-width: 400px; /* Évite que les cartes soient trop grandes */
+  box-sizing: border-box;
+  overflow: hidden; /* Coupe tout ce qui dépasse */
+  flex: 1 1 calc(33.33% - 2rem); /* Par défaut, 3 cartes max par ligne */
+  max-width: 400px;
+
+
+
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 30px var(--primary);
+}
+
+/* IMAGE RESPONSIVE */
+.project-image {
+  width: 100%;
+  height: auto;
+  max-height: 200px; /* Évite l’étirement des images */
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* ==== CAROUSEL CONTAINER ==== */
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem 0;
+  overflow: hidden;
+}
+
+/* ==== CAROUSEL RESPONSIVE ==== */
+.carousel {
+  display: flex;
+  overflow-x: auto; /* Permet le défilement horizontal */
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  gap: 1.5rem;
+  padding: 1rem;
+  -webkit-overflow-scrolling: touch; /* Meilleur scrolling sur mobile */
+  white-space: nowrap;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none; /* Cacher la scrollbar pour un effet plus fluide */
+}
+
+/* ==== LIMITER LE NOMBRE DE PROJETS VISIBLE SELON L'ÉCRAN ==== */
+.carousel > .project-card {
+  flex: 0 0 auto;
+  max-width: calc(33.333% - 1.5rem); /* Sur grand écran, max 3 projets par ligne */
+}
+
+/* ==== BOUTONS FLÈCHES FIXES ==== */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  border: 2px solid var(--secondary);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15%;
+  cursor: pointer;
+  font-size: 1.8rem;
+  color: white;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 20px var(--primary);
+  z-index: 1000;
+}
+
+.carousel-button.left {
+  left: 10px;
+}
+
+.carousel-button.right {
+  right: 10px;
+}
+
+/* Effet au survol */
+.carousel-button:hover {
+  background: linear-gradient(45deg, var(--secondary), var(--primary));
+  box-shadow: 0 0 25px var(--secondary);
+}
+
+/* Effet au survol */
+.carousel-button:hover:not(.disabled) {
+  background: var(--secondary);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 20px var(--secondary);
+}
+.carousel-button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: gray;
+  pointer-events: none;
+}
+
+
+/* Cacher les boutons quand une popup est ouverte */
+.project-open .carousel-button {
+  display: none !important;
+}
+
+/* Effet pour d'autres boutons (si nécessaire) */
+.carousel-button:not(.left):not(.right):hover:not(.disabled) {
+  background: var(--secondary);
+  transform: scale(1.1);
+  box-shadow: 0 0 20px var(--secondary);
+}
+
+.technologies-list, .features-list, .results-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.tech-item, .feature-item, .result-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 12px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+.popup-links {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.popup-links a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #1e293b;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.popup-links a:hover {
+  background: #334155;
+}
+
+/* Si le carousel est vide */
+.no-projects {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  width: 100%;
+}
+.popup-container {
+  height: 80%;
+  max-width: 700px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  overflow:auto;
+  overflow-y: auto;
+  justify-content: space-between;
+  transition: transform 0.5s ease-in-out;
+  margin-right: auto; /* ✅ Force la carte à gauche */
+}
+.popup-container.shift-left {
+  transform: translate(-80%, -50%) !important; /* -80% pour compenser */
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  opacity: 1;
+}
+
+
+/* Animation pour la rendre plus fluide */
+.popup-container.shift-left:hover {
+  transform: translateX(-27%);
+}
+
+.right-image-container {
+  position: relative; /* Fixe l'image sur l'écran */
+  right: 2vw; /* 🔥 Ajoute un espace à droite */
+  transform: translateY(-50%); /* 🔥 Centre verticalement */
+  width: 40%;
+  left: 55%; /* Move it slightly left */
+
+  max-width: 500px;
+  height: auto;
+  margin-right:30px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+ 
+
+
+/* Quand la popup est affichée */
+.right-image-container.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+
+.right-image {
+  width: 100%;
+
+  height: auto;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.right-image:hover {
+  transform: scale(1.05);
+}
+.right-image-container.show {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  pointer-events: auto;
+}
+
+
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 15px;
+  overflow: auto;
+}
+/* Partie gauche : Texte et image */
+.popup-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Aligner le contenu en haut */
+  padding: 15px;
+}
+
+/* Image dans la popup */
+.popup-image {
+  width: 100%;
+  max-width: 100%;
+  max-height: 300px; /* Limite la hauteur de l'image */
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  object-fit: cover; /* Assure que l'image couvre la zone sans déformation */
+  margin: 0 auto; /* Centrer l'image */
+  border:red;
+}
+
+.popup-image:hover {
+  transform: scale(1.05); /* Zoom léger */
+}
+
+/* Overlay pour l'image zoomée */
+.zoomed-overlay {
+  position: fixed;
+  inset: 0; /* Couvre toute la fenêtre */
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+
+.zoomed-image {
+  width: 90vw; /* Takes up 90% of viewport width */
+  height: auto;
+  max-width: 90vw; /* Ensures it doesn't exceed viewport width */
+  max-height: 85vh; /* Limits height to 85% of viewport height */
+  object-fit: contain; /* Ensures the image maintains aspect ratio */
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+  background: white;
+  padding: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+.zoomed-image:hover {
+  transform: scale(1.05);
+}
+
+/* Bouton de fermeture */
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--glass);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.close-button:hover {
+  background: rgba(0, 0, 0, 0.3);
+  transform: rotate(90deg);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+.popup-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* ✅ Sépare bien la carte et l’image */
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0 5%;
+  overflow-y: auto;
+  overflow:auto;
+}
+
+
+
+
+
+.popup-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  order: -1; /* Forcer le titre en haut */
+}
+
+.popup-image-container {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+
+}
+
+
+.popup-image:hover {
+  transform: scale(1.05);
+}
+/* ==== BOUTONS PRÉCÉDENT/SUIVANT ESTHÉTIQUES ==== */
+.prev-button, .next-button {
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 15%;
+  transition: background 0.3s ease-in-out;
+  box-shadow: 0 0 15px var(--primary);
+}
+
+.prev-button:hover, .next-button:hover {
+  background: linear-gradient(45deg, var(--secondary), var(--primary));
+  box-shadow: 0 0 20px var(--secondary);
+}
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--glass);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.close-button:hover {
+  background: rgba(0, 0, 0, 0.3);
+  transform: rotate(90deg);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+/* ==== RESPONSIVE DESIGN ==== */
+@media (max-width: 1024px) {
+  .projects-header h1 {
+    font-size: 3rem;
+  }
+
+  .carousel {
+    width: 100%;
+  }
+
+  .project-card {
+    width: 90%;
+    max-width: 350px; /* Réduction de max-width */
+ 
+      overflow: hidden; /* Coupe tout ce qui dépasse */
+      flex: 1 1 calc(50% - 2rem); /* 2 cartes par ligne sur tablette */
+
+  }
+
+
+}
+
+@media (max-width: 1024px) {
+  .carousel > .project-card {
+    max-width: calc(50% - 1.5rem); /* Sur tablettes, 2 projets visibles */
+  }
+  
+}
+
+@media (max-width: 600px) {
+  .carousel > .project-card {
+    max-width: 100%; /* Sur petits écrans, 1 projet visible */
+  }
+}
+@media (max-width: 768px) {
+  .projects-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .carousel {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .carousel-button {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+
+  .popup-container {
+    width: 95%;
+  }
+
+  .popup-content {
+    flex-direction: column; /* Empile le contenu verticalement */
+  }
+
+  .popup-right {
+    order: -1; /* Place les images en haut sur mobile */
+  }
+  .right-image-container {
+    display: none !important;
+  }
+}
+@media (max-width: 480px) {
+  .projects-header h1 {
+    font-size: 2rem;
+  }
+
+  .project-card {
+    width: 100%;
+    max-width: 350px;
+    overflow: hidden; /* Coupe tout ce qui dépasse */
+
+  }
+
+  .carousel-button {
+    display: none; /* Supprime les boutons sur mobile, si besoin */
+  }
+
+  .popup-container {
+    width: 100%; /* Occupe toute la largeur sur très petits écrans */
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .close-button {
+    top: 10px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+  }
+}

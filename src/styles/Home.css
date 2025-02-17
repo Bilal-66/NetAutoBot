@@ -1,0 +1,195 @@
+:root {
+    --primary: #7c3aed;
+    --secondary: #6366f1;
+    --background: #0f172a;
+    --glass: rgba(255, 255, 255, 0.08);
+  }
+  
+  
+  /* General Styles */
+  body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--background);
+    color: white;
+    overflow-x: hidden;
+    overflow-y: hidden; /* Empêche le défilement vertical */
+  }
+  /* Hero Section */
+  .hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(45deg, #0f172a 0%, #1e293b 100%);
+  }
+  
+  
+  
+  .floating-cube:nth-child(1) {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+  }
+  
+  .floating-cube:nth-child(2) {
+    top: 60%;
+    right: 15%;
+    animation-delay: 2s;
+  }
+  
+  .hero-content {
+    text-align: center;
+    max-width: 800px;
+    padding: 2rem;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .hero-text h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+  
+  .hero-text p {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+  }
+  
+  /* Boutons style Olaolu */
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  
+  .hero-buttons a {
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: 500;
+  }
+  
+  .btn-primary {
+    background: var(--glass);
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background: rgba(99, 102, 241, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  .btn-secondary {
+    background: transparent;
+    color: var(--primary);
+    border: 1px solid var(--primary) !important;
+  }
+  
+  .btn-secondary:hover {
+    background: rgba(124, 58, 237, 0.1);
+  }
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  
+
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+  /* Profile Image */
+  .profile-image {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 2rem auto;
+    animation: float 6s ease-in-out infinite;
+
+    border: 4px solid var(--primary);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Popup Style */
+  .popup-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 1000px;
+    background: var(--glass);
+    backdrop-filter: blur(24px);
+    border-radius: 20px;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hero-text h1 {
+      font-size: 2.5rem;
+    }
+    
+    .popup-container {
+      grid-template-columns: 1fr;
+      width: 95%;
+    }
+    
+    .profile-image {
+      width: 200px;
+      height: 200px;
+    }
+  }
+  
+  /* Effet de particules */
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .animated-container {
+    position: relative;
+    overflow: hidden;
+  }
+  .animated-text {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-section::after {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    filter: blur(100px);
+    opacity: 0.15;
+    animation: gradient 8s ease infinite;
+  }

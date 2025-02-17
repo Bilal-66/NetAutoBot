@@ -1,0 +1,91 @@
+[
+  {
+    "id": 1,
+    "title": "Network Automation Tool",
+    "type": "Backend",
+    "description": "A network monitoring tool for OBS, automating data retrieval with SNMPv3 and Selenium. It improves network visibility and automates reporting.",
+    "technologies": ["Python", "Selenium", "SNMPv3", "Bash", "Pandas", "Power BI"],
+    "features": [
+      "Automated SNMPv3 network data retrieval",
+      "Web data extraction via Selenium automation",
+      "Smart PDF reports for network performance",
+      "Real-time Power BI data visualization",
+      "Live monitoring dashboard for IT teams",
+      "Cross-platform support for all major OS"
+    ],
+    "results": [
+      "Manual monitoring reduced by 80%",
+      "More accurate and automated reports",
+      "Faster issue detection and response"
+    ],
+    "images": ["Diagram.jpg", "Recommandation Letter.jpg"],
+    "github": "https://github.com/Bilal-66/NetAutoBot",
+    "demo": null
+  },  
+  {
+    "id": 2,
+    "title": "Professional Portfolio",
+    "type": "Frontend",
+    "description": "A modern portfolio with smooth animations, responsive design, and SEO optimization to showcase skills and projects.",
+    "technologies": ["React", "Three.js", "GSAP", "Sass", "Framer Motion"],
+    "features": [
+      "Responsive design for all devices",
+      "Advanced SEO for better visibility",
+      "Dark/light mode for accessibility",
+      "Optimized performance (90+ score)",
+      "Interactive 3D elements with Three.js"
+    ],
+    "results": [
+      "Higher engagement via animations",
+      "Better search engine rankings",
+      "Faster and smoother user experience"
+    ],
+    "images": ["portfolio.jpg"],
+    "github": null,
+    "demo": "https://yourportfolio.com"
+  },
+  {
+    "id": 3,
+    "title": "Carcassonne Digital Implementation",
+    "type": "Game Development",
+    "description": "A digital version of the Carcassonne board game, implemented in C with a focus on tile placement and game mechanics.",
+    "technologies": ["C", "SDL2", "Makefile"],
+    "features": [
+      "Tile-based game mechanics",
+      "AI opponent for single-player mode",
+      "Multiplayer support (local and online)",
+      "Graphical interface using SDL2",
+      "Custom game rules and scoring"
+    ],
+    "results": [
+      "Improved understanding of game logic implementation",
+      "Efficient memory management in C",
+      "Smooth and responsive gameplay"
+    ],
+    "images": [ "CARCASSONNE.jpg", "carca2.jpg"],
+    "github": "https://github.com/Bilal-66/CARCASSONNE",
+    "demo": null
+  },
+  {
+    "id": 4,
+    "title": "Digital RISC-V Processor",
+    "type": "Hardware Design",
+    "description": "A custom implementation of a 32-bit RISC-V pipeline processor, designed and simulated using Verilog.",
+    "technologies": ["Verilog", "ModelSim", "Quartus Prime", "FPGA"],
+    "features": [
+      "Five-stage pipeline architecture",
+      "Support for key RISC-V instructions",
+      "Cache memory optimization",
+      "Testbench simulation with ModelSim",
+      "Deployable on FPGA for real-time execution"
+    ],
+    "results": [
+      "Optimized instruction throughput",
+      "Successful execution of core RISC-V instructions",
+      "Validated using ModelSim and FPGA testing"
+    ],
+    "images": ["RV32.jpg", "RV32PIPELINE.jpg"],
+    "github": "https://github.com/Bilal-66/ProcessorRISV32",
+    "demo": null
+  }
+]

@@ -1,0 +1,267 @@
+:root {
+  --primary: #7c3aed;
+  --secondary: #6366f1;
+  --background: linear-gradient(45deg, #0f172a, #1e293b);
+  --glass: rgba(255, 255, 255, 0.08);
+  --neon-glow: rgba(124, 58, 237, 0.6);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: var(--background);
+  color: white; /* Tout le texte par défaut sera blanc */
+  height: 100%;
+  overflow-x: hidden;
+  position: relative;
+  padding-right: 40px; /* ✅ Ajoute encore plus de marge à droite */
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  min-height: 100vh;
+  width: calc(100% - 3rem); /* ✅ Assure une marge sur les côtés */
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 1; /* Assure que le contenu est devant */
+}
+
+.particles-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 200px); /* Étend encore plus pour couvrir le bas */
+  z-index: -1; /* Particles en arrière-plan */
+  pointer-events: none; /* Désactive les interactions */
+}
+
+.particles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Assure que les particules restent en arrière-plan */
+}
+
+/* ✅ Ajout de marge supplémentaire pour éviter les coupures */
+.category-selector {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 0 2.5rem 10px; /* ✅ Ajout de marge supplémentaire */
+  width: calc(100% - 4rem); /* ✅ Empêche d’être collé à droite */
+  overflow: visible;
+}
+
+.category-selector::-webkit-scrollbar {
+  display: none;
+}
+
+.category-button {
+  flex: 1 1 auto;
+  max-width: 180px;
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.category-button.active {
+  background: var(--primary);
+  color: white;
+}
+
+.category-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ✅ Ajout de plus de marge pour éviter que les cartes soient cachées */
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  width: calc(100% - 4rem); /* ✅ Plus de marge sur les côtés */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 4rem; /* ✅ Augmente le padding pour équilibrer */
+}
+
+.skills-container .flip-card {
+  margin: 0 auto;
+  margin-bottom: 4rem;
+}
+
+.flip-card {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 0 30px; /* ✅ Ajout de marge pour ne pas être trop serré */
+}
+
+.mobile-skills {
+  padding: 0 50px; /* ✅ Augmente la marge sur mobile */
+}
+
+.skills-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  color: var(--secondary);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 0.5rem;
+}
+
+/* ✅ Amélioration des cartes pour éviter qu’elles débordent */
+.flip-card {
+  background: transparent;
+  perspective: 1000px;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  text-align: center;
+  transition: transform 1.5s ease-in-out;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.flip-card-front {
+  background: #ffffff;
+  color: black;
+}
+
+.flip-card-back {
+  background: var(--primary);
+  color: white;
+  transform: rotateY(180deg);
+}
+
+@keyframes neonGlow {
+  from {
+    text-shadow: 0 0 10px var(--neon-glow);
+  }
+  to {
+    text-shadow: 0 0 25px var(--neon-glow);
+  }
+}
+
+/* ✅ Ajoute une marge sur mobile pour éviter que les catégories ne soient collées */
+@media (max-width: 768px) {
+  .category-selector {
+    flex-wrap: wrap;
+    padding: 0 2rem; /* ✅ Ajuste la marge sur mobile */
+    gap: 0.5rem;
+  }
+  
+  .category-button {
+    flex: 1 1 calc(33.33% - 1rem);
+    font-size: 14px;
+    padding: 0.5rem 1rem;
+  }
+
+  .skills-container {
+    padding: 2rem 2rem;
+  }
+
+  .flip-card {
+    max-width: 90%;
+    padding: 0 15px;
+  }
+}
+@media (max-width: 1500px) {
+  .skills-container {
+    max-width: 1000px; /* ✅ Ajuste la largeur */
+    margin: 0 auto; /* ✅ Centre correctement */
+    padding: 2rem;
+  }
+
+  .skills-container .flip-card {
+    max-width: 90%;
+    margin: 0 auto 4rem;
+  }
+}
+
+/* ✅ Solution pour forcer un bon centrage */
+body {
+  overflow-x: hidden; /* Évite tout débordement horizontal */
+}
+
+
+/* ✅ Amélioration pour éviter que les cartes et boutons soient coupés sur mobile */
+@media (max-width: 480px) {
+  .category-button {
+    flex: 1 1 calc(50% - 1rem);
+  }
+
+  .skills-container {
+    padding: 2rem;
+    margin: 0 auto;
+    max-width: 90%;
+  }
+
+  .flip-card {
+    width: 100%;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+}
+
+/* ✅ Correction finale pour éviter le collage à droite */
+@media (max-width: 480px) {
+  .skills-container {
+    padding: 2rem;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+
+  .skills-container .flip-card {
+    margin: 0 auto 4rem auto;
+    width: 100%;
+    max-width: 90%;
+    padding: 0 20px;
+  }
+}
+
+.mobile-skills {
+  padding: 0 25px;
+  max-width: 100%;
+}
+
